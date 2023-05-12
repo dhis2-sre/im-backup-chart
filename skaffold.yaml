@@ -1,0 +1,9 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+deploy:
+  helm:
+    releases:
+      - name: im-backup
+        namespace: velero
+        createNamespace: true
+        chartPath: charts/im-backup
