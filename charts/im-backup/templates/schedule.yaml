@@ -1,0 +1,30 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: {{ include "im-backup.fullname" . }}
+  labels:
+    {{- include "im-backup.labels" . | nindent 4 }}
+status:
+  phase: Enabled
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  template:
+    csiSnapshotTimeout: {{ .Values.csiSnapshotTimeout }}
+    includedNamespaces:
+      {{- toYaml .Values.includedNamespaces | nindent 6 }}
+    orLabelSelectors:
+      - matchExpressions:
+          - key: app.kubernetes.io/instance
+            operator: In
+            values:
+              - im-manager-{{ .Values.environment }}
+              - im-manager-postgresql-{{ .Values.environment }}
+              - im-manager-redis-{{ .Values.environment }}
+              - im-rabbitmq-{{ .Values.environment }}
+              - im-inspector-{{ .Values.environment }}
+              - im-web-client-{{ .Values.environment }}
+      - matchLabels:
+          owner: helm
+    snapshotVolumes: true
+    ttl: {{ .Values.ttl }}
+  useOwnerReferencesInBackup: false

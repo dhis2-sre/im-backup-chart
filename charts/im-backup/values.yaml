@@ -1,0 +1,15 @@
+# Default values for im-backup.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+environment: dev
+
+schedule: "@every 24h"
+
+ttl: 24h0m0s
+
+includedNamespaces:
+  - instance-manager-dev
+  - whoami
+
+csiSnapshotTimeout: 10m

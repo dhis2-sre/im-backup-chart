@@ -1,0 +1,7 @@
+name: {{ include "im-backup.fullname" . }}
+schedule: {{ .Values.schedule }}
+ttl: {{ .Values.ttl }}
+includedNamespaces:
+  {{- toYaml .Values.includedNamespaces | nindent 2 }}
+
+$ velero schedule describe {{ include "im-backup.fullname" . }}
