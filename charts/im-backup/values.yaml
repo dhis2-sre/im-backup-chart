@@ -6,7 +6,7 @@ environment: dev
 
 schedule: "@every 24h"
 
-ttl: 24h0m0s
+ttl: 720h0m0s # 30 days
 
 includedNamespaces:
   - instance-manager-dev
