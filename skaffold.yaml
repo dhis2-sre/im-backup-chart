@@ -3,7 +3,12 @@ kind: Config
 deploy:
   helm:
     releases:
-      - name: im-backup
+      - name: im-backup-{{ .ENVIRONMENT }}
         namespace: velero
         createNamespace: true
         chartPath: charts/im-backup
+        setValueTemplates:
+          environment: "{{ .ENVIRONMENT }}"
+          includedNamespaces:
+            - instance-manager-{{ .ENVIRONMENT }}
+            - whoami

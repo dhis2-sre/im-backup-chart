@@ -1,4 +1,5 @@
 name: {{ include "im-backup.fullname" . }}
+environment: {{ .Values.environment }}
 schedule: {{ .Values.schedule }}
 ttl: {{ .Values.ttl }}
 includedNamespaces:
