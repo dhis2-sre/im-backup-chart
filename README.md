@@ -33,7 +33,43 @@ published to [this GitHub page](https://dhis2-sre.github.io/dhis2-core-helm/inde
 skaffold run
 ```
 
-### Release
+## Test backup
+
+**WARNING: Don't execute the below commands without !**
+
+After deploying the chart you can use the below commands to
+
+1. Create a backup
+
+```sh
+velero backup create im-backup-test --from-schedule im-backup-dev
+```
+
+2. Delete helm releases
+
+```sh
+helm ls --all --short --namespace your-test-installation-of-the-instance-manager | xargs -L1 helm --namespace your-test-installation-of-the-instance-manager delete
+```
+
+3. Delete pvc
+
+```sh
+kubectl delete pvc --namespace your-test-installation-of-the-instance-manager --all
+```
+
+4. Delete the namespace
+
+```sh
+kubectl delete namespace your-test-installation-of-the-instance-manager
+```
+
+5. Restore the namespace from the backup
+
+```sh
+velero restore create --from-backup im-backup-test
+```
+
+## Release chart
 
 Bump the version in [Chart.yaml](./charts/core/Chart.yaml), commit and push.
 
@@ -42,7 +78,7 @@ Bump the version in [Chart.yaml](./charts/core/Chart.yaml), commit and push.
 Our release workflow will then using [Helm chart releaser action](https://github.com/helm/chart-releaser-action)
 
 * create a tag `im-backup-<version>`
-* create a [release](https://github.com/dhis2-sre/dhis2-core-helm/releases) associated with the new tag
+* create a [release](https://github.com/dhis2-sre/im-backup-chart/releases) associated with the new tag
 * commit an updated index.yaml with the new release
 * redeploy the GitHub pages to serve the new index.yaml
 
