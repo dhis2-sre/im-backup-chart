@@ -3,6 +3,16 @@ entries:
   im-backup:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-05-17T04:25:58.378368158Z"
+    description: A Helm chart for Kubernetes
+    digest: de383e5adcb1c21534ee62f2ab18e79d75d4cb295f90a0d17c0e91b2331336e8
+    name: im-backup
+    type: application
+    urls:
+    - https://github.com/dhis2-sre/im-backup-chart/releases/download/im-backup-0.2.0/im-backup-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-05-12T06:40:13.912841241Z"
     description: A Helm chart for Kubernetes
     digest: 95fea08d0aa72c35228e36d8e1ffd94443fa1bb73f44a74dafeaac0209935234
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/dhis2-sre/im-backup-chart/releases/download/im-backup-0.1.0/im-backup-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-12T06:40:13.912846041Z"
+generated: "2023-05-17T04:25:58.378374258Z"
