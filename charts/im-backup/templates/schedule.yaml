@@ -10,6 +10,7 @@ spec:
   schedule: {{ .Values.schedule | quote }}
   template:
     csiSnapshotTimeout: {{ .Values.csiSnapshotTimeout }}
+    includeClusterResources: {{ .Values.includeClusterResources }}
     includedNamespaces:
       {{- toYaml .Values.includedNamespaces | nindent 6 }}
     orLabelSelectors:
