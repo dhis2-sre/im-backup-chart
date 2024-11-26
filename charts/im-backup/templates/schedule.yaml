@@ -24,8 +24,11 @@ spec:
               - im-rabbitmq-{{ .Values.environment }}
               - im-inspector-{{ .Values.environment }}
               - im-web-client-{{ .Values.environment }}
+              - cluster-apps
       - matchLabels:
           owner: helm
+      - matchLabels:
+          app.kubernetes.io/managed-by: Helm
     snapshotVolumes: true
     ttl: {{ .Values.ttl }}
   useOwnerReferencesInBackup: false
