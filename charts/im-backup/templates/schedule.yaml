@@ -24,6 +24,7 @@ spec:
               - im-rabbitmq-{{ .Values.environment }}
               - im-inspector-{{ .Values.environment }}
               - im-web-client-{{ .Values.environment }}
+              - cluster-apps
       - matchLabels:
           owner: helm
     snapshotVolumes: true
