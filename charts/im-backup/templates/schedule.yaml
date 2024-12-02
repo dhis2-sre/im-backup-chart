@@ -27,8 +27,6 @@ spec:
               - cluster-apps
       - matchLabels:
           owner: helm
-      - matchLabels:
-          app.kubernetes.io/managed-by: Helm
     snapshotVolumes: true
     ttl: {{ .Values.ttl }}
   useOwnerReferencesInBackup: false
